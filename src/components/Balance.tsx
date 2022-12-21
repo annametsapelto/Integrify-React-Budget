@@ -7,7 +7,7 @@ const Balance = ({balance, setSavings, savings}: BalanceType) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (toSavings < balance) {
-            setSavings(savings - toSavings);
+            setSavings(toSavings);
         } else {
             throw new Error;
         }

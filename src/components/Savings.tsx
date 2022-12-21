@@ -3,12 +3,18 @@ import { SavingsType } from '../types/SavingsType';
 
 const Savings = (savings: SavingsType) => {
     const [target, setTarget] = useState(0);
+    const [finalTarget, setFinalTarget] = useState(0);
 
     const handleTarget = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setTarget(target);
+        setFinalTarget(target);
     }
-    
+
+    const handleTargetReset = () => {
+        setTarget(0);
+        setFinalTarget(0);
+    }
+
     return (
         <div>
             <p>Your savings total is: {savings.savings}</p>
@@ -19,6 +25,8 @@ const Savings = (savings: SavingsType) => {
                     <button type="submit">Add target</button>
                 </form>
             </div>
+            <button onClick={(event) => handleTargetReset()}>Reset target</button>
+            <p>Your saving target is now {finalTarget}</p>
         </div>
     )
 }
