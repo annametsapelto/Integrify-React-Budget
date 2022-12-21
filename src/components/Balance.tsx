@@ -1,9 +1,9 @@
+import { BalanceType } from "../types/BalanceType";
 
-
-const Balance = () => {
+const Balance = (balance: BalanceType) => {
     return (
         <div>
-            <p>Your balance is: </p>
+            <p>Your balance is: {balance.balance}</p>
         </div>
     )
 }

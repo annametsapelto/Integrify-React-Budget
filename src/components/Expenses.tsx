@@ -20,7 +20,7 @@ const Expenses = ({expenses, setExpenses, totalExpenses}: ExpenseType) => {
             <div>
                 <ul>
                     {expenses.map((item) => 
-                        <li>{item.source} {item.amount} {item.date}</li>
+                        <li key={item.id}>{item.source} {item.amount} {item.date}</li>
                     )}
                 </ul>
             </div>
