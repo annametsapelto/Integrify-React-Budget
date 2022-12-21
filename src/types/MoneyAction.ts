@@ -1,7 +1,7 @@
 export interface MoneyAction {
-    id: number
+    id: string
     amount: number,
     source: string,
-    category: string
-    date: Date
+//    category: string
+    date: string
 }
