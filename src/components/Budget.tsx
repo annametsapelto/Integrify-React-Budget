@@ -34,7 +34,7 @@ const Budget = () => {
             <Expenses totalExpenses = {totalExpenses} setExpenses = {setExpenses} expenses={expenses} balance={balance} setShowError={setShowError}/>
             {!showError && <p>You do not have enough money for the expense.</p>}
             <Balance balance={balance} savings={savings} setSavings={setSavings}/>
-            <Savings />
+            <Savings savings={savings}/>
         </div>
     )
 }
