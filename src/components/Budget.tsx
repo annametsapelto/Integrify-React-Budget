@@ -13,6 +13,7 @@ const Budget = () => {
     const [totalExpenses, setTotalExpenses] = useState(0);
     const [balance, setBalance] = useState(0);
     const [savings, setSavings] = useState(0);
+    const [showError, setShowError] = useState(false);
 
 
     useEffect(() => {
@@ -25,13 +26,14 @@ const Budget = () => {
 
      useEffect(() => {
         setBalance(totalIncomes - totalExpenses - savings);
-     }, [totalExpenses, totalIncomes])
+     }, [totalExpenses, totalIncomes, savings])
 
     return (
         <div>
             <Incomes incomes = {incomes} setIncomes = {setIncomes} totalIncome = {totalIncomes}/>
-            <Expenses totalExpenses = {totalExpenses} setExpenses = {setExpenses} expenses={expenses}/>
-            <Balance balance = {balance}/>
+            <Expenses totalExpenses = {totalExpenses} setExpenses = {setExpenses} expenses={expenses} balance={balance} setShowError={setShowError}/>
+            {!showError && <p>You do not have enough money for the expense.</p>}
+            <Balance balance={balance} savings={savings} setSavings={setSavings}/>
             <Savings />
         </div>
     )

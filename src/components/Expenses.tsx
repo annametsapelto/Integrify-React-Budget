@@ -4,7 +4,7 @@ import { MoneyAction } from '../types/MoneyAction';
 import { ExpenseType } from '../types/ExpenseType';
 import FormTemplate from './FormTemplate';
 
-const Expenses = ({expenses, setExpenses, totalExpenses}: ExpenseType) => {
+const Expenses = ({expenses, setExpenses, totalExpenses, balance, setShowError}: ExpenseType) => {
  /*   const categories = [
         {value: "Housing", label: "housing"},
         {value: "Groseries", label: "groseries"},
@@ -16,7 +16,7 @@ const Expenses = ({expenses, setExpenses, totalExpenses}: ExpenseType) => {
     return (
         <div>
             <p>Total of your expenses is: {totalExpenses}</p>
-            <FormTemplate list = {expenses} setList = {setExpenses} formName = "Expense sum" reason = "Expense type"/>
+            <FormTemplate list = {expenses} setList = {setExpenses} formName = "Expense sum" reason = "Expense type" balance={balance} setShowError={setShowError}/>
             <div>
                 <ul>
                     {expenses.map((item) => 

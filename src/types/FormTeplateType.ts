@@ -7,4 +7,6 @@ export interface FormTemplateType {
 //    categories: CategoryType[]
     list: MoneyAction[]
     setList: React.Dispatch<React.SetStateAction<MoneyAction[]>> 
+    balance?: number
+    setShowError?: React.Dispatch<React.SetStateAction<boolean>>
 }
