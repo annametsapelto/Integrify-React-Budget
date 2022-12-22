@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import {MoneyAction} from '../types/MoneyAction';
 import {IncomeType} from '../types/IncomeType';
 import FormTemplate from './FormTemplate';
-import { Card, CardContent } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 
 
 const Incomes = ({incomes, setIncomes, totalIncome}: IncomeType) => {
@@ -17,7 +17,7 @@ const Incomes = ({incomes, setIncomes, totalIncome}: IncomeType) => {
     return(
         <Card sx={{maxWidth: 300, margin: 3}}>
             <CardContent>
-                <p>The sum of your income is: {totalIncome}</p>
+                <Typography variant="h6">The sum of your income is: {totalIncome}</Typography>
                 <FormTemplate list = {incomes} setList = {setIncomes} /*categories = {categories}*/ formName= "Income sum" reason = "Income source"/>
                 <div>
                     <ul>

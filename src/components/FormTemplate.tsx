@@ -5,7 +5,7 @@ import { CategoryType } from '../types/CategoryType';
 import { FormTemplateType } from '../types/FormTeplateType';
 import {v4 as uuid4} from 'uuid';
 import { MoneyAction } from '../types/MoneyAction';
-import { Button } from '@mui/material';
+import { Button, FormLabel, FormGroup } from '@mui/material';
 
 const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance, setShowError}: FormTemplateType) => {
 //    const categoryList = {categories};
@@ -20,10 +20,13 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
         const MoneyItem: MoneyAction = {
             id, amount, source, date
         }
-        if (balance) {
-            if (balance <= MoneyItem.amount && setShowError) {
-                setShowError(true);
-                return;
+        if (setShowError) {
+            if (!balance) {
+                const balance = 0;
+                if (balance <= MoneyItem.amount) {
+                    setShowError(true);
+                    return;
+                }
             }
         }
         setList([... list, MoneyItem]);
@@ -37,13 +40,15 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
     return(
         <div>
             <form onSubmit={(event) => handleSubmit(event)}> 
-                <label htmlFor ="sum">{formName}</label>
-                <input type="number" id="sum" name="sum" value={amount} onChange={(event) => amountHandler(event)}></input>
-                <label htmlFor="source">{reason}</label>
-                <input type="string" id="source" name="source" value={source} onChange= {(event) => setSource(event.target.value)}></input>
-                <label htmlFor="date"></label>
-                <input type="date" id="date" name="date" value={date} onChange= {(event) => setDate(event.target.value)}></input>
-                <Button variant="contained" type="submit">Submit</Button>
+                <FormGroup>                
+                    <FormLabel htmlFor ="sum">{formName}</FormLabel>
+                    <input type="number" id="sum" name="sum" value={amount} onChange={(event) => amountHandler(event)}></input>
+                    <FormLabel htmlFor="source">{reason}</FormLabel>
+                    <input type="string" id="source" name="source" value={source} onChange= {(event) => setSource(event.target.value)}></input>
+                    <FormLabel htmlFor="date"></FormLabel>
+                    <input type="date" id="date" name="date" value={date} onChange= {(event) => setDate(event.target.value)}></input>
+                    <Button variant="contained" type="submit">Submit</Button>
+                </FormGroup>
             </form>
         </div>
     )

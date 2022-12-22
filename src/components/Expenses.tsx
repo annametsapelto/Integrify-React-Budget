@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { MoneyAction } from '../types/MoneyAction';
 import { ExpenseType } from '../types/ExpenseType';
 import FormTemplate from './FormTemplate';
-import { Card, CardContent } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 
 const Expenses = ({expenses, setExpenses, totalExpenses, balance, setShowError}: ExpenseType) => {
  /*   const categories = [
@@ -17,7 +17,7 @@ const Expenses = ({expenses, setExpenses, totalExpenses, balance, setShowError}:
     return (
         <Card sx={{maxWidth: 300, margin: 3}}>
             <CardContent>            
-                <p>Total of your expenses is: {totalExpenses}</p>
+                <Typography variant="h6">Total of your expenses is: {totalExpenses}</Typography>
                 <FormTemplate list = {expenses} setList = {setExpenses} formName = "Expense sum" reason = "Expense type" balance={balance} setShowError={setShowError}/>
                 <div>
                     <ul>
