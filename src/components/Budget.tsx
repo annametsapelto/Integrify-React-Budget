@@ -44,7 +44,7 @@ const Budget = () => {
                 <Balance balance={balance} savings={savings} setSavings={setSavings}/>
             </Grid>
             <Grid item xs= {5}>
-                <Savings savings={savings}/>
+                <Savings savings={savings} setSavings={setSavings} balance={balance}/>
             </Grid>
         </Grid>
     )
