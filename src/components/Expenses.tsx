@@ -1,9 +1,8 @@
 import { useState } from 'react';
 
-import { MoneyAction } from '../types/MoneyAction';
 import { ExpenseType } from '../types/ExpenseType';
 import FormTemplate from './FormTemplate';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography} from '@mui/material';
 
 const Expenses = ({expenses, setExpenses, totalExpenses, balance, setShowError}: ExpenseType) => {
  /*   const categories = [
@@ -14,20 +13,21 @@ const Expenses = ({expenses, setExpenses, totalExpenses, balance, setShowError}:
         {value: "Travelling", label: "travelling"},
         {value: "Other", label: "other"}
     ] */
-    return (
-        <Card sx={{maxWidth: 300, margin: 3}}>
+    return (       
+            <Card sx={{maxWidth: 400, margin: 3}}>
             <CardContent>            
                 <Typography variant="h6">Total of your expenses is: {totalExpenses}</Typography>
                 <FormTemplate list = {expenses} setList = {setExpenses} formName = "Expense sum" reason = "Expense type" balance={balance} setShowError={setShowError}/>
                 <div>
                     <ul>
                         {expenses.map((item) => 
-                            <li key={item.id}>{item.source} {item.amount} {item.date}</li>
+                            <li key={item.id}>{item.source}: {item.amount} - {item.date}</li>
                         )}
                     </ul>
                 </div>
             </CardContent>
         </Card>
+
     )
 }
 

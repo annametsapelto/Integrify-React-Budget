@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SavingsType } from '../types/SavingsType';
-import { Card, CardContent, Button, Typography, FormGroup, FormLabel } from '@mui/material';
+import { Card, CardContent, Button, Typography, FormControl, FormLabel, TextField } from '@mui/material';
 
 const Savings = (savings: SavingsType) => {
     const [target, setTarget] = useState(0);
@@ -17,16 +17,22 @@ const Savings = (savings: SavingsType) => {
     }
 
     return (
-        <Card sx={{maxWidth: 300, margin: 3}}>
+        <Card sx={{maxWidth: 400, margin: 3}}>
             <CardContent>
                 <Typography variant="h6">Your savings total is: {savings.savings}</Typography>
-                <FormGroup>
+                <FormControl>
                     <form onSubmit={(event) => handleTarget(event)}>
                         <FormLabel htmlFor='savingTarget'>Add a new saving target</FormLabel>
-                        <input type="number" id="savingTarget" name="savingTarget" value={target} onChange={(event) => (setTarget(parseInt(event.target.value)))}></input>
+                        <TextField 
+                            type="number" 
+                            id="savingTarget" 
+                            name="savingTarget" 
+                            value={target} 
+                            onChange={(event) => (setTarget(parseInt(event.target.value)))}>
+                        </TextField>
                         <Button variant="contained" type="submit">Add target</Button>
                     </form>
-                </FormGroup>
+                </FormControl>
                 <Button variant="outlined" onClick={(event) => handleTargetReset()}>Reset target</Button>
                 <Typography variant="h6">Your saving target is now {finalTarget}</Typography>
             </CardContent>

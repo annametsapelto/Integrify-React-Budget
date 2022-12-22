@@ -5,7 +5,7 @@ import { CategoryType } from '../types/CategoryType';
 import { FormTemplateType } from '../types/FormTeplateType';
 import {v4 as uuid4} from 'uuid';
 import { MoneyAction } from '../types/MoneyAction';
-import { Button, FormLabel, FormGroup } from '@mui/material';
+import { Button, FormLabel, FormControl, TextField } from '@mui/material';
 
 const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance, setShowError}: FormTemplateType) => {
 //    const categoryList = {categories};
@@ -37,7 +37,7 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
         setList([... list, MoneyItem]);
     }
 
-    const amountHandler = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const amountHandler = (event:React.ChangeEvent<HTMLInputElement |HTMLTextAreaElement>) => {
         setAmount(parseInt(event.target.value));
         if (setShowError) setShowError(false);
     }
@@ -45,15 +45,15 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
     return(
         <div>
             <form onSubmit={(event) => handleSubmit(event)}> 
-                <FormGroup>                
+                <FormControl>                
                     <FormLabel htmlFor ="sum">{formName}</FormLabel>
-                    <input type="number" id="sum" name="sum" value={amount} onChange={(event) => amountHandler(event)}></input>
+                    <TextField type="number" id="sum" name="sum" value={amount} onChange={(event) => amountHandler(event)} required></TextField>
                     <FormLabel htmlFor="source">{reason}</FormLabel>
-                    <input type="string" id="source" name="source" value={source} onChange= {(event) => setSource(event.target.value)}></input>
-                    <FormLabel htmlFor="date"></FormLabel>
-                    <input type="date" id="date" name="date" value={date} onChange= {(event) => setDate(event.target.value)}></input>
+                    <TextField type="string" id="source" name="source" value={source} onChange={(event) => setSource(event.target.value)}></TextField>
+                    <FormLabel htmlFor="date">Date</FormLabel>
+                    <TextField type="date" id="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}></TextField>
                     <Button variant="contained" type="submit">Submit</Button>
-                </FormGroup>
+                </FormControl>
             </form>
         </div>
     )

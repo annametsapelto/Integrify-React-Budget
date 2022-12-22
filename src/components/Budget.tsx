@@ -5,6 +5,7 @@ import Expenses from "./Expenses";
 import Balance from "./Balance";
 import Savings from "./Savings";
 import { MoneyAction } from '../types/MoneyAction';
+import { Grid, Typography } from '@mui/material';
 
 const Budget = () => {
     const [incomes, setIncomes] = useState<MoneyAction[]>([]);
@@ -29,13 +30,23 @@ const Budget = () => {
      }, [totalExpenses, totalIncomes, savings])
 
     return (
-        <div>
-            <Incomes incomes = {incomes} setIncomes = {setIncomes} totalIncome = {totalIncomes}/>
-            <Expenses totalExpenses = {totalExpenses} setExpenses = {setExpenses} expenses={expenses} balance={balance} setShowError={setShowError}/>
-            {showError && <p>You do not have enough money for the expense.</p>}
-            <Balance balance={balance} savings={savings} setSavings={setSavings}/>
-            <Savings savings={savings}/>
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs= {5}>
+                <Incomes incomes = {incomes} setIncomes = {setIncomes} totalIncome = {totalIncomes}/>
+            </Grid>
+            <Grid item xs= {5}>
+                <Grid>            
+                    <Expenses totalExpenses = {totalExpenses} setExpenses = {setExpenses} expenses={expenses} balance={balance} setShowError={setShowError}/>
+                    {showError && <Typography>You do not have enough money for the expense.</Typography>}
+                </Grid>
+            </Grid>
+            <Grid item xs= {5}>
+                <Balance balance={balance} savings={savings} setSavings={setSavings}/>
+            </Grid>
+            <Grid item xs= {5}>
+                <Savings savings={savings}/>
+            </Grid>
+        </Grid>
     )
 }
 

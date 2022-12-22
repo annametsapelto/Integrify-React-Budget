@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BalanceType } from "../types/BalanceType";
-import { Card, CardContent, Button, Typography, FormGroup, FormLabel } from '@mui/material';
+import { Card, CardContent, Button, Typography, FormControl, FormLabel, TextField } from '@mui/material';
 
 const Balance = ({balance, setSavings, savings}: BalanceType) => {
     const [toSavings, setToSavings] = useState(0);
@@ -14,22 +14,22 @@ const Balance = ({balance, setSavings, savings}: BalanceType) => {
         }
     }
     return (
-        <Card sx={{maxWidth: 300, margin: 3}}>
+        <Card sx={{maxWidth: 400, margin: 3}}>
             <CardContent>            
                 <Typography variant="h6">Your balance is: {balance}</Typography>
-                <FormGroup>
+                <FormControl>
                     <form onSubmit={event => handleSubmit(event)}>
                         <FormLabel htmlFor="moveToSavings">Move a sum to savings</FormLabel>
-                        <input 
+                        <TextField 
                             type="number" 
                             id="moveToSavings" 
                             name="moveToSavings" 
                             value={toSavings} 
                             onChange={(event) => setToSavings(parseInt(event.target.value))}>                        
-                        </input>
+                        </TextField>
                         <Button variant="contained" type="submit">Move sum</Button>
                     </form>
-                </FormGroup>
+                </FormControl>
             </CardContent>
         </Card>
     )
