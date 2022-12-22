@@ -23,7 +23,12 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
         if (setShowError) {
             if (!balance) {
                 const balance = 0;
-                if (balance <= MoneyItem.amount) {
+                if (balance < MoneyItem.amount) {
+                    setShowError(true);
+                    return;
+                }
+            } else {
+                if (balance < MoneyItem.amount) {
                     setShowError(true);
                     return;
                 }
