@@ -5,6 +5,7 @@ import { CategoryType } from '../types/CategoryType';
 import { FormTemplateType } from '../types/FormTeplateType';
 import {v4 as uuid4} from 'uuid';
 import { MoneyAction } from '../types/MoneyAction';
+import { Button } from '@mui/material';
 
 const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance, setShowError}: FormTemplateType) => {
 //    const categoryList = {categories};
@@ -42,7 +43,7 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
                 <input type="string" id="source" name="source" value={source} onChange= {(event) => setSource(event.target.value)}></input>
                 <label htmlFor="date"></label>
                 <input type="date" id="date" name="date" value={date} onChange= {(event) => setDate(event.target.value)}></input>
-                <button type="submit">Submit</button>
+                <Button variant="contained" type="submit">Submit</Button>
             </form>
         </div>
     )
