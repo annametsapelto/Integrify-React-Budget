@@ -20,7 +20,7 @@ const FormTemplate = ({formName, reason,/* categories,*/ list, setList, balance,
             id, amount, source, date
         }
         if (balance) {
-            if (balance < MoneyItem.amount && setShowError) {
+            if (balance <= MoneyItem.amount && setShowError) {
                 setShowError(true);
                 return;
             }
